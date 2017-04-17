@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.daniel.telefony.MainActivity"
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:src="@mipmap/huawei" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            android:textSize="20dp"
+            android:text="Nazwa : Huawei P9 Lite\nSystem : Android v.6.0\nRozdzielczość : 1080 x 1920 pix\nWielkość : 5.2 cali\nProcesor : octa-core, HiSilicon Kirin 650, 1.7 GHz, Mail-T880MP2\nPamięć : 16 GB (9GB dla użytkownika)\nRAM : 2 GB\nKarta pamięci : microSD do 128 GB\nAparat głowny : 13 Mpix\nAparat przedni : 8 Mpix 1080p\nZasilanie : Li-lon 3000 mAh"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Powrót"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:onClick="powrot"
+            />
+
+    </LinearLayout>
+</ScrollView>

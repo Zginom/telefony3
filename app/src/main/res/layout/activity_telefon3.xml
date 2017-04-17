@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.daniel.telefony.MainActivity"
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        >
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:src="@mipmap/lenovo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            android:textSize="20dp"
+            android:text="Nazwa : Lenovo K5\nSystem : Android v.5.1\nRozdzielczość : 720 x 1280 pix\nWielkość : 5 cali\nProcesor : octa-core, Qualcomm MSM8929 Snapdragon 415, 1.4 GHz, Adreno 405\nPamięć : 16 GB\nRAM : 2 GB\nKarta pamięci : microSD do 32 GB\nAparat głowny : 13 Mpix\nAparat przedni : 5 Mpix\nZasilanie : Li-poly 2750 mAh"
+            />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powrót"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:onClick="powrot"
+        />
+
+    </LinearLayout>
+</ScrollView>

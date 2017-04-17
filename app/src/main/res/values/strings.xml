@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Telefony</string>
+    <string-array name="Telefony">
+        <item>Huawei P9 Lite</item>
+        <item>Samsung Galaxy J5</item>
+        <item>Lenovo K5</item>
+    </string-array>
+
+</resources>
