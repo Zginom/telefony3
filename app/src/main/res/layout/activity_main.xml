@@ -7,7 +7,8 @@
 
 
     android:layout_height="match_parent"
-    android:layout_width="match_parent" >
+    android:layout_width="match_parent"
+    android:layout_gravity="center">
 
     <ListView
         android:layout_width="wrap_content"
@@ -18,5 +19,55 @@
         >
 
     </ListView>
+
+    <Button
+        android:id="@+id/wyjscie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wyjscie"
+        android:textSize="25dp"
+        android:layout_below="@+id/telefony"
+        android:onClick="exit"
+        />
+
+    <Button
+        android:id="@+id/muzyka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Muzyka"
+        android:textSize="25dp"
+        android:layout_below="@+id/wyjscie"
+        android:onClick="muzyka"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stop"
+        android:text="Stop"
+        android:textSize="25dp"
+        android:layout_below="@id/muzyka"
+        android:onClick="stop"
+        />
+
+    <Button
+        android:id="@+id/Alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alert dialog"
+        android:textSize="25dp"
+        android:layout_below="@+id/stop"
+        android:onClick="alert"
+        />
+
+    <Button
+        android:id="@+id/customAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom alert"
+        android:textSize="25dp"
+        android:layout_below="@+id/Alert"
+        android:onClick="custom"
+        />
 
 </RelativeLayout>

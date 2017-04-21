@@ -19,5 +19,6 @@ public class Telefon2 extends AppCompatActivity {
         context = getApplicationContext();
         Intent intent = new Intent(context,MainActivity.class);
         startActivity(intent);
+        Telefon2.this.finish();
     }
 }
