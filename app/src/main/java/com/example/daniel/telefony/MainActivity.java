@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,22 +18,33 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
-import static com.example.daniel.telefony.R.id.parent;
-import static com.example.daniel.telefony.R.raw.sahti;
-import static com.example.daniel.telefony.R.styleable.Toolbar;
-import static com.example.daniel.telefony.R.styleable.View;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView lv;
     private String[] telefon;
+    private Button record;
+    private Button done;
+    private Button play;
+    private MediaPlayer media;
+    private MediaRecorder recorder;
+    private String mFileName;
     private Button wyjdz;
     private Button muzyka;
-    private Button stop;
-    private MediaPlayer media;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +55,18 @@ public class MainActivity extends AppCompatActivity {
         muzyka = (Button)findViewById(R.id.muzyka);
         initResourecs();
         initTelefonyListView();
+
+        record = (Button)findViewById(R.id.record);
+        done = (Button)findViewById(R.id.stop_record);
+        play = (Button)findViewById(R.id.play_record);
+
+        done.setEnabled(false);
+        play.setEnabled(false);
+
+        mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
+
+
 
 
 
@@ -70,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 }
-
 
     private void initResourecs() {
         Resources res = getResources();
@@ -144,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void stop ( View v)
     {
+
         if ( media != null )
         media.stop();
     }
@@ -171,4 +195,153 @@ public class MainActivity extends AppCompatActivity {
         return inflater.inflate(R.layout.alert,null);
     }
 
+    ///---------///
+
+    public void record( View v )
+    {
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        recorder.setOutputFile(mFileName);
+
+        record.setEnabled(false);
+        done.setEnabled(true);
+        play.setEnabled(false);
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        recorder.start();
+    }
+
+    public void stop_record ( View v )
+    {
+        record.setEnabled(true);
+        play.setEnabled(true);
+        done.setEnabled(false);
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+    }
+
+    public void play_record ( View v )
+    {
+        done.setEnabled(false);
+        media = new MediaPlayer();
+
+        try {
+            media.setDataSource(mFileName);
+            media.prepare();
+            media.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public void Save ( View view)
+//    {
+//        try {
+//            OutputStreamWriter out = new OutputStreamWriter(openFileOutput("mojplik.txt", MODE_APPEND));
+//            EditText ET = (EditText) findViewById(R.id.edycja);
+//            String text = ET.getText().toString();
+//            out.write(text);
+//            out.write('\n');
+//            out.close();
+//            Toast.makeText(this, "Text Saved !", Toast.LENGTH_SHORT).show();
+//        }
+//        catch (java.io.IOException e)
+//        {
+//            Toast.makeText(this,"Sorry cos sie ewidentnie ... nieudało",Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//
+//    public void View ( View view)
+//    {
+//        StringBuilder text = new StringBuilder();
+//        try{
+//            InputStream instream = openFileInput("mojplik.txt");
+//            if ( instream != null)
+//            {
+//                InputStreamReader inputreader = new InputStreamReader(instream);
+//                BufferedReader buffreader = new BufferedReader(inputreader);
+//                String line = null;
+//                while(( line = buffreader.readLine() ) != null)
+//                {
+//                    text.append(line);
+//                    text.append('\n');
+//                }
+//            }
+//        }
+//        catch ( IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        TextView tv = (TextView)findViewById(R.id.tekst);
+//        tv.setText(text);
+//    }
+//
+//    public void SaveSD ( View view)
+//    {
+//        File sd = Environment.getExternalStorageDirectory();
+//        File dir = new File(sd.getAbsolutePath() + "/MojePliki/");
+//        dir.mkdir();
+//        File file = new File(dir,"mojplik.txt");
+//        EditText et = (EditText)findViewById(R.id.edycja);
+//        String text = et.getText().toString();
+//        try{
+//            FileOutputStream os = new FileOutputStream(file,true);
+//            os.write(text.getBytes());
+//            os.write('\n');
+//            os.close();
+//            Toast.makeText(this, "Text Saved on SD card !", Toast.LENGTH_SHORT).show();
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//
+//    public void ViewSD ( View view)
+//    {
+//        File sd = Environment.getExternalStorageDirectory();
+//        File dir = new File(sd.getAbsolutePath() + "/MojePliki/");
+//        File file = new File(dir,"mojplik.txt");
+//        int length = (int)file.length();
+//        byte[] bytes = new byte[length];
+//        FileInputStream in;
+//        try{
+//            in = new FileInputStream(file);
+//            in.read(bytes);
+//            in.close();
+//        }
+//        catch ( FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        catch ( IOException e) {
+//            e.printStackTrace();
+//        }
+//        String contents = new String(bytes);
+//        TextView tv = (TextView) findViewById(R.id.tekst);
+//        tv.setText(contents);
+//    }
+//
+//    public void Clear ( View view)
+//    {
+//        TextView tv = (TextView) findViewById(R.id.tekst);
+//        tv.setText(null);
+//
+//        File sd = Environment.getExternalStorageDirectory();
+//        File dir = new File(sd.getAbsolutePath() + "/MojePliki/");
+//        File file = new File(dir,"mojplik.txt");
+//        file.delete();
+//
+//        String dir2 = getFilesDir().getAbsolutePath();
+//        File file2 = new File(dir2,"mojplik.txt");
+//        file2.delete();
+//
+//    }
+
 }
+

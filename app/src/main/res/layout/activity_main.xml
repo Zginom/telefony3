@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.daniel.telefony.MainActivity"
 
-
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    >
 
     <ListView
         android:layout_width="wrap_content"
@@ -20,13 +20,22 @@
 
     </ListView>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefony">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
     <Button
         android:id="@+id/wyjscie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wyjscie"
-        android:textSize="25dp"
-        android:layout_below="@+id/telefony"
+        android:textSize="18dp"
         android:onClick="exit"
         />
 
@@ -35,8 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Muzyka"
-        android:textSize="25dp"
-        android:layout_below="@+id/wyjscie"
+        android:textSize="18dp"
+        android:layout_toRightOf="@+id/wyjscie"
         android:onClick="muzyka"
         />
 
@@ -44,9 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/stop"
+        android:layout_toRightOf="@+id/muzyka"
         android:text="Stop"
-        android:textSize="25dp"
-        android:layout_below="@id/muzyka"
+        android:textSize="18dp"
         android:onClick="stop"
         />
 
@@ -55,8 +64,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alert dialog"
-        android:textSize="25dp"
-        android:layout_below="@+id/stop"
+        android:textSize="18dp"
+        android:layout_below="@+id/wyjscie"
         android:onClick="alert"
         />
 
@@ -65,9 +74,114 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Custom alert"
-        android:textSize="25dp"
-        android:layout_below="@+id/Alert"
+        android:textSize="18dp"
+        android:layout_below="@+id/wyjscie"
+        android:layout_toRightOf="@+id/Alert"
         android:onClick="custom"
         />
 
+    <Button
+        android:id="@+id/record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nagraj"
+        android:textSize="15dp"
+        android:layout_below="@+id/Alert"
+        android:onClick="record"
+        />
+
+    <Button
+        android:id="@+id/stop_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zatrzymaj"
+        android:textSize="15dp"
+        android:layout_below="@+id/Alert"
+        android:layout_toRightOf="@+id/record"
+        android:onClick="stop_record"
+        />
+
+    <Button
+        android:id="@+id/play_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Odsluchaj"
+        android:textSize="15dp"
+        android:layout_below="@+id/Alert"
+        android:layout_toRightOf="@+id/stop_record"
+        android:onClick="play_record"
+        />
+
+    <!--<EditText-->
+        <!--android:id="@+id/edycja"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textPostalAddress"-->
+        <!--android:layout_below="@+id/record"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/Save"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Save"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/edycja"-->
+        <!--android:onClick="Save"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/View"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="View"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/edycja"-->
+        <!--android:layout_toRightOf="@+id/Save"-->
+        <!--android:onClick="View"-->
+    <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/SaveSD"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="SaveSD"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/Save"-->
+        <!--android:onClick="SaveSD"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/ViewSD"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="ViewSD"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/Save"-->
+        <!--android:layout_toRightOf="@+id/SaveSD"-->
+        <!--android:onClick="ViewSD"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/Clear"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Clear"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_below="@+id/SaveSD"-->
+        <!--android:onClick="Clear"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tekst"-->
+        <!--android:layout_below="@+id/Clear"-->
+        <!--android:text="TekstView"-->
+        <!--android:textSize="20sp"-->
+        <!--/>-->
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
